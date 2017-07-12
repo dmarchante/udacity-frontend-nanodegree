@@ -11,4 +11,4 @@ For this quiz, use jQuery to set up an event listener. Your event listener must:
 $("#my-button").on("click", function() {
     $(this).remove();
     $("body").addClass("success");
-})
+});
