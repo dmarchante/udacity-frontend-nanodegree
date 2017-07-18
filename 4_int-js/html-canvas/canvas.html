@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas Test</title>
+</head>
+
+<body>
+    <canvas id="c" width="500" height="500"></canvas>
+
+    <script>
+        var c = document.querySelector("#c");
+        var ctx = c.getContext("2d");
+        /*
+                //ctx.fillRect(100, 100, 100, 100);
+
+                //ctx.strokeRect(50, 50, 50, 50);
+                ctx.strokeStyle = "#33cc33";
+
+                ctx.strokeRect(50, 50, 100, 100);
+
+                ctx.beginPath();
+                ctx.moveTo(75, 75);
+                ctx.lineTo(125, 75);
+                ctx.lineTo(125, 125);
+                ctx.lineTo(75, 75);
+                ctx.fill();
+
+                ctx.fillStyle = "blue";
+                ctx.fill();
+        */
+        ctx.font = "36pt, Calibri";
+        ctx.textAlign = "center";
+
+        ctx.fillStyle = "white";
+        ctx.fillText("Cavnas Memes", c.width / 2, 40);
+
+        ctx.strokeStyle = "black";
+        ctx.linewidth = 3;
+        ctx.strokeText("Cavnas Memes", c.width / 2, 40);
+    </script>
+
+</body>
+
+</html>
