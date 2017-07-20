@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas Test</title>
+</head>
+
+<body>
+    <video id="v" controls loop src="#"></video>
+    <canvas id="c"></canvas>
+
+    <script>
+        var canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var v = document.querySelector('#v');
+            var canvas = document.querySelector('#c');
+            var ctx = canvas.getContext('2d');
+
+            v.addEventListener('loadmetadata', function() {
+                canvas.width = this.videoWidth;
+                canvas.height = this.videoHeight;
+            });
+
+            var draw = function() {
+                canvas.getContext('2d').drawImage(v, 0, 0);
+                requestAnimationFrame(draw);
+            }
+
+            v.addEventListener('play', function() {
+                if (v.paused || v.ended) return;
+                draw();
+            })
+        });
+
+        function makeGrayScale() {
+            var r, g, b, a;
+            var imageData = ctx.getImageData(0, 0, 640, 426);
+            var numPixels = image.Data.leng / 4;
+            for (var i = 0; i < numPixels; i++) {
+                if (i % 10 === 0) {
+                    r = imageData.data[i * 4 + 0] = 255;
+                    g = imageData.data[i * 4 + 1] = 255;
+                    b = imageData.data[i * 4 + 2] = 255;
+                    a = imageData.data[i * 4 + 3] = 255;
+                    pixel = makePixelGrayScale(r, g, b, a);
+                    imageData[i * 4 + 0] = pixel.r;
+                    imageData[i * 4 + 1] = pixel.g;
+                    imageData[i * 4 + 2] = pixel.b;
+                    imageData[i * 4 + 3] = pixel.a;
+                }
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+    </script>
+
+</body>
+
+</html>
